@@ -20,7 +20,6 @@ def html_cleaner(site):
 	if len(soup) == 0: # In case the first parser doesn't work, try another one
 		soup = BeautifulSoup(html, 'html5lib')
 
-
 	#look for script and style tags/elements and remove this from soup object
 
 	for sstags in soup(["script", "style"]):
@@ -39,15 +38,12 @@ def html_cleaner(site):
 	text = "".join(bit for bit in bits if bit)
 
 	#use regular expressions to get rid of junk that is not a word
-	#leads to some spacing issues, insert space between lowercase and uppercase letters e.g. "bigDog" becomes "big Dog"
-
 	text = re.sub("[^a-zA-Z+3]", " ", text) #include '+' for C++ and '3' for D3
+
+	#space issues no longer a concern, comment this out
 	#text = re.sub(r"([a-z+3])([A-Z+3])", r"\g<1> \g<2>", text)
 
 	# lower case and split into words
-
-	#return whole job ad, then return ad split into words?
-
 	text = text.lower()
 
 	ad_words = text.split()
