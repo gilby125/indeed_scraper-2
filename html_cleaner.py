@@ -3,7 +3,6 @@ from urllib.request import urlopen
 from nltk.corpus import stopwords # Filter out stopwords, such as 'the', 'or', 'and'
 import re #regular expressions
 from time import time #to see how long each step takes
-from joblib import Parallel, delayed #to speed up / paralellize
 
 def html_cleaner(site):
 	"""
